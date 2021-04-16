@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 const StyledSlide = styled.div`
   width: 100%;
+  max-width: 1200px;
 `
 
 export default function Slide({ children, id, className }) {

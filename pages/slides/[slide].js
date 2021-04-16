@@ -23,7 +23,7 @@ const SlideshowPage = ({ totalSlidePages, currentSlide, filename }) => {
       <Header
         name={siteConfig.name}
         title={siteConfig.title}
-        date={siteConfig.date}
+        date={new Intl.DateTimeFormat('nl-NL', {year: 'numeric', month: 'long', day: 'numeric'}).format(siteConfig.date)}
         url={siteConfig.author.url}
       />
       <MDXContent />

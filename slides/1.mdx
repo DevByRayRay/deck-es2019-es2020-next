@@ -2,55 +2,472 @@
     
 <Cover>
 
-# NextJS MDX Deck
+# ES2019 & ES2020
+
+## Use modern JavaScript Today!
     
-Create presentations using Next & React & MDX.
+👨‍💻👩‍💻
 
 </Cover>
 
 ---
 
-1. Clone this project.
-1. Write some MDX.
-1. Export as [static app](https://nextjs.org/docs/advanced-features/static-html-export)
-1. ???
-1. Profit as a speaker 💰💰💰
+# Let's get started
+
+<img width='154px' height='54px' src='/dash-race-car.png' />
+
+---
+
+# ES2019
+
+---
+
+# Object.fromEntries()
+
+---
+
+## 1.0 Object.entries()
+
+Translate an object into a multi-dimensional array can be done with `Object.entries`.
+
+<Columns>
+
+<ColumnItem>
+
+```javascript
+const car = {
+    wheels: 4,
+    seats: 5,
+    doors: 3,
+    fuel: 'electric',
+    business: false
+}
+
+Object.entries(car)
+
+```
+</ColumnItem>
+
+<ColumnItem>
+
+
+```javascript
+/*
+Result
+[
+    ["wheels", 4],
+    ["seats", 5],
+    ["doors", 3],
+    ["fuel", "electric"],
+    ["business", false]
+]
+*/
+
+```
+
+</ColumnItem>
+
+</Columns>
 
 <SpeakerNotes>
     
-Private notes here. 
-
-You can write an extremely long note and it'll still display inside of the presenter mode.
-
-# Even Markdown!
-
-- Just
-- do
-- it
+- Laten we beginnen met Object.entries()
+- Geintroduceerd in ES2017
+- Vertaald een Object in een multi-dementionale Array
 
 </SpeakerNotes>
 
-
 ---
 
-> Inscrutable icons litter the face of the devices even though the research
-> community has long demonstrated that people cannot remember the meaning of
-> more than a small number of icons […] Who can remember what each icon
-> means? Not me.
-> <cite>Don Norman</cite>
+## 1.1 Object.fromEntries()
 
----
+Translate an object into a multi-dimensional array.
 
-# 🤫
+<Columns>
 
----
+<ColumnItem>
 
-## Slides are written in MDX!
+```javascript
+const car = {
+	wheels: 4,
+	seats: 5,
+	doors: 3,
+	fuel: 'electric',
+	business: false
+}
 
-And code is highlighted using `react-syntax-highlighter`.
+const numberValues = Object.entries(car)
+	.filter(([key, value]) => parseFloat(value))
 
-```js
-const variable = someFunction();
+/*
+Result
+[
+	["wheels", 4],
+	["seats", 5],
+	["doors", 3],
+]
+*/
+
 ```
+</ColumnItem>
+
+<ColumnItem>
+
+
+```javascript
+Object.fromEntries(numberValues)
+
+/*
+Result
+{
+    "wheels": 4,
+    "seats": 5,
+    "doors": 3
+}
+*/
+
+```
+
+</ColumnItem>
+
+</Columns>
+
+<SpeakerNotes>
+    
+- Object.fromEntries vertaald een multi-dementionale Array naar een object
+- Handig wanneer je van een Object alleen alle numerieke velden wil hebben
+
+1. Zet het Object om met Object.entries
+2. Filter alle nummerieke waarden eruit
+3. Zet het weer terug naar een Object met Object.fromEntries
+    
+
+</SpeakerNotes>
+
+---
+
+## 1.2 Support
+
+The browser support is pretty great! 
+
+All modern browsers support `Object.entries()` by default.
+
+[Check CanIUse.com](https://caniuse.com/mdn-javascript_builtins_object_fromentries)
+
+---
+
+# Array.prototype.flat()
+
+---
+
+
+## 2.0 Array.prototype.flat()
+
+From multi-dimentional Arrays to single dimention Arrays.
+
+<Columns>
+
+<ColumnItem>
+
+```javascript
+const carProps = [
+	["wheels", 4],
+	["seats", 5],
+	["doors", 3],
+	["fuel", "electric"],
+	["business", false]
+]
+carProps.flat()
+```
+</ColumnItem>
+
+<ColumnItem>
+
+```javascript
+/*
+Result
+[
+    "wheels", 4, 
+    "seats", 5, 
+    "doors", 3, 
+    "fuel", "electric", 
+    "business", false
+]
+*/
+```
+
+</ColumnItem>
+
+</Columns>
+
+<SpeakerNotes>
+    
+- Zet multi-dementionale Array envoudig om naar een single dimentionale Array
+
+</SpeakerNotes>
+
+---
+
+## 2.1 Make extra layers flat
+With an extra layer give a parameter to the `.flat(number)` method.
+
+<Columns>
+
+<ColumnItem>
+
+```javascript
+const carProps = [
+	["wheels", [
+		"front left",
+		"front right",
+		"back left",
+		"back right",
+	]],
+	["seats", 5],
+	["doors", 3],
+	["fuel", "electric"],
+	["business", false]
+]
+carProps.flat(2)
+```
+</ColumnItem>
+
+<ColumnItem>
+
+```javascript
+/*
+Result
+[
+	"wheels",
+	"front left",
+	"front right",
+	"back left",
+	"back right",
+	"seats",
+	5,
+	"doors",
+	3,
+	"fuel",
+	"electric",
+	"business",
+	false
+]
+*/
+```
+
+</ColumnItem>
+
+</Columns>
+
+<SpeakerNotes>
+    
+- Met een extra level diep geef je een numerieke parameter mee met de flat method
+
+</SpeakerNotes>
+
+---
+
+## 2.2 Support
+
+The browser support is pretty great! 
+
+All modern browsers support `Array.prototype.flat` by default.
+
+[Check CanIUse.com](https://caniuse.com/mdn-javascript_builtins_array_flat)
+
+---
+
+# Array.prototype.flatMap()
+
+---
+
+## 3.0 Array.prototype.flatMap()
+
+The `flatMap()` method is a combination <br />of the `.map().flat()` methods.
+
+<SpeakerNotes>
+    
+- Flatmap laat je `map().flat()` combineren
+
+</SpeakerNotes>
+
+---
+
+## 3.1 Example
+
+Let's say we have a list of products in a webshop, but we want to show all the tags in a tag-cloud on the left (just like on Amazon) from all the visible products.
+
+```jsx
+const products = [
+    {
+        id: 1,
+        title: 'Screwdriver',
+        price: 7,
+        tags: ['Tools',"Screw","Wood",]
+    },
+    {
+        id: 2,
+        title: 'Hammer',
+        price: 7,
+        tags: ['Tools',"Nail","Wood",]
+    },
+]
+```
+
+<SpeakerNotes>
+    
+- Als voorbeeld pakken we een webshop
+- We krijgen van de API een lijst aan producten terug
+- Maar we willen alle tags van de producten verzamelen en tonen
+- Net zoals het filter op Amazon
+
+</SpeakerNotes>
+
+---
+
+## 3.2 How To Get The Product Tags?
+
+<Columns>
+
+
+<ColumnItem>
+
+```javascript
+const products = [
+    {
+        id: 1,
+        title: 'Screwdriver',
+        price: 7,
+        tags: ['Tools',"Screw","Wood",]
+    },
+    {
+        id: 2,
+        title: 'Hammer',
+        price: 7,
+        tags: ['Tools',"Nail","Wood",]
+    },
+]
+```
+
+</ColumnItem>
+
+<ColumnItem>
+
+```javascript
+[...new Set(products.map(x => x.tags).flat())]
+[...new Set(products.flatMap(x => x.tags))]
+
+/*
+Result 
+[
+    "Tools", 
+    "Screw", 
+    "Wood",
+    "Nail"
+]
+*/
+```
+
+</ColumnItem>
+
+</Columns>
+
+
+<SpeakerNotes>
+    
+- Vroeger zouden we meerdere for loops nodig hebben gehad om dit voor elkaar te krijgen
+- Je kunt ook gewoon `.map().flat()`
+- FlatMap maakt het nu gewoon nog korter
+
+</SpeakerNotes>
+
+---
+
+## 3.3 Support
+
+The browser support is pretty great! 
+
+All modern browsers support `Array.prototype.flatMap` by default.
+
+[Check CanIUse.com](https://caniuse.com/mdn-javascript_builtins_array_flatmap)
+
+---
+
+# trimStart() <br /> trimEnd()
+
+---
+
+## 4.0 trimStart() & trimEnd()
+
+Remove whitespace characters (*space, tab, no-break space, etc.*) from to start or end from a string. 
+
+With the `.trim()` method we can do it for the start and end.
+
+With the `trimStart()` and `trimEnd()` we can do it for one of them.
+
+<SpeakerNotes>
+    
+- Met `.trim()` kan je alle whitespace characters verwijderen van een string
+- Met `trimStart()` alleen het begin van een string
+- Met `trimEnd()` alleen aan het einde van een string
+
+</SpeakerNotes>
+
+---
+
+## 4.1 Example
+
+```javascript
+const str = '   trimStart() and.  trimEnd() are   COOL😁   ';
+```
+** Results **
+
+```javascript
+console.log(str.trimEnd());
+// Result: "   trimStart() and.  trimEnd() are   COOL😁"
+
+console.log(str.trimStart());
+// Result: "trimStart() and.  trimEnd() are   COOL😁   "
+
+console.log(str.trim());
+// Result: "trimStart() and.  trimEnd() are   COOL😁"
+```
+
+<SpeakerNotes>
+    
+- Met `.trim()` kan je alle whitespace characters verwijderen van een string
+- Met `trimStart()` alleen het begin van een string
+- Met `trimEnd()` alleen aan het einde van een string
+
+</SpeakerNotes>
+
+---
+
+As you can see that the `.trim()` methods removes the whitespace characters from both sides. But it doesn't remove them in the middle.
+
+### Support
+
+The browser support is pretty great! All modern browsers as of today are supporting `String.prototype.trimStart()` and `String.prototype.trimEnd()` by default.
+
+The only weird thing is that Microsoft Edge also includes `.trimLeft()` and `.trimRight()`.
+
+[https://caniuse.com/mdn-javascript_builtins_string_trimend](https://caniuse.com/mdn-javascript_builtins_string_trimend)
+
+[https://caniuse.com/mdn-javascript_builtins_string_trimstart](https://caniuse.com/mdn-javascript_builtins_string_trimstart)
+
+
+
+
+
+
+
+
+---
+
+# 📢 Questions?
+
+---
+
+# Thank You 👋
 
 </SlidePage>

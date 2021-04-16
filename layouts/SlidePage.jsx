@@ -13,10 +13,10 @@ import { MODES } from '../constants/modes'
 
 const GlobalStyle = createGlobalStyle`
   :root {
-    --bg: #050505;
-    --meta: #888;
-    --accent: rgb(0, 92, 221);
-    --text: #FAFAFA;
+    --bg: #000022;
+    --meta: #FBF5F3;
+    --text: #ffffff;
+    --accent: #E28413;
     --base: 1.5rem;
     --code: 1rem;
     --heading-font-family: "Poppins";
@@ -163,6 +163,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: var(--heading-font-family);
     font-weight: var(--heading-font-weight);
     font-size: 200%;
+    text-transform: uppercase;
 
     margin-bottom: 0.5rem;
   }
@@ -170,9 +171,13 @@ const GlobalStyle = createGlobalStyle`
   h2 {
     font-family: var(--heading-font-family);
     font-weight: var(--heading-font-weight);
-    font-size: 120%;
+    font-size: 140%;
+    text-transform: uppercase;
 
-    margin-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent);
+    padding: 0.5rem;
+
+    margin-bottom: 1.5rem;
   }
 
   p {
@@ -209,7 +214,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   header span {
-    color: var(--text);
+    color: var(--accent);
   }
 `
 
